@@ -8,6 +8,7 @@
 .data
 	array: .word 1 2 3 4 5 6 7 8 9 10
 	cout: .asciiz "The contents of the array in reverse order are:\n"
+	newline: .asciiz "\n"
 
 .text
 printA:
@@ -22,6 +23,9 @@ loop:
 	lw $a0, 0($t2)
 	li $v0, 1
 	syscall #prints element
+	li $v0, 4
+	la $a0, newline
+	syscall
 	addi $t0, $t0, -1
 	addi $t2, $t2, -4
 	j loop
